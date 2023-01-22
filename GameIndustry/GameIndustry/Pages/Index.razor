@@ -11,44 +11,7 @@
         <h2>Show all page in MOCK Database</h2>
     </div>
 </div>
-
-<div class="table-responsive">
-    <table class="table table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th>Name</th>
-                <th>Genre</th>
-                <th>Release</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in games)
-            {
-                <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Genre</td>
-                    <td>@item.ReleaseDate.ToString("dd.MM.yyyy")</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
-
-@code{
-    private List<Game> games { get; set; }
-
-    /// <summary>
-    /// Метод отвечает за данные до отрисовки
-    /// </summary>
-    /// <returns></returns>
-    protected async override Task OnInitializedAsync()
-    {
-        games = new List<Game>()
-        {
-        new Game(){ Name = "Farming Simulator 2019", Genre = "Simulator", ReleaseDate = new DateTime(2018,11,19)},
-        new Game(){ Name = "Witcher", Genre = "Action/RPG", ReleaseDate = new DateTime(2015,5,18)},
-        new Game(){ Name = "Destroy All Humans", Genre = "Action-Adventure", ReleaseDate = new DateTime(2007,11,19)},
-        };
-    }
-}
+<GameListTable></GameListTable>
+<GameListTable></GameListTable>
+<GameListTable></GameListTable>
 
