@@ -9,32 +9,32 @@
             </tr>
         </thead>
         <tbody>
-            @if(Games == null)
+            @if (Games == null)
             {
-            <tr>LOADING...</tr>
+                <tr>LOADING...</tr>
             }
             else if (Games.Count == 0)
             {
-            <tr>NO Items in array</tr>
+                <tr>NO Items in array</tr>
             }
             else
             {
-            @foreach (var item in Games)
-            {
-                <IndividualGame Game="item" IsTable="true" DisplayButtons = "displayButtons" />
-              @*  <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Genre</td>
-                    <td>@item.ReleaseDate.ToString("dd.MM.yyyy")</td>
-                </tr>*@
-            }
+                @foreach (var item in Games)
+                {
+                    <IndividualGame Game="item" IsTable="true" DisplayButtons="displayButtons" />
+                    @*  <tr>
+            <td>@item.Name</td>
+            <td>@item.Genre</td>
+            <td>@item.ReleaseDate.ToString("dd.MM.yyyy")</td>
+            </tr>*@
+                }
             }
         </tbody>
     </table>
 </div>
 
 @code {
-    [Parameter]  public List<Game> Games { get; set; }
+    [Parameter] public List<Game> Games { get; set; }
 
     private bool displayButtons = false;
 }
