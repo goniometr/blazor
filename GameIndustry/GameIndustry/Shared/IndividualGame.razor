@@ -1,11 +1,24 @@
-﻿<div class="row text-center alert alert-info">
-    <div class="col">
-        <p>@Game.Name</p>
-        <p>@Game.Genre</p>
-        <p>@Game.ReleaseDate.ToString("dd.MM.yyyy")</p>
+﻿@if (!IsTable)
+{
+    <div class="row text-center alert alert-info">
+        <div class="col">
+            <p>@Game.Name</p>
+            <p>@Game.Genre</p>
+            <p>@Game.ReleaseDate.ToString("dd.MM.yyyy")</p>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <tr>
+        <td>@Game.Name</td>
+        <td>@Game.Genre</td>
+        <td>@Game.ReleaseDate.ToString("dd.MM.yyyy")</td>
+    </tr>
+}
+
 
 @code {
     [Parameter] public Game Game { get; set; }
+    [Parameter] public bool IsTable { get; set; }
 }
