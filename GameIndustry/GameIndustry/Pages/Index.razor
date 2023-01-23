@@ -12,7 +12,7 @@
     </div>
 </div>
 <GameListTable Games="games"></GameListTable>
-<IndividualGame Game="games[0]" DisplayButtons="true" />
+<IndividualGame Game="oneGameToShow" DisplayButtons="true" IsTable="false" SwitchGame="ShowNewGame" />
 
 @code
 {
@@ -29,6 +29,36 @@
         new Game(){ Name = "Witcher", Genre = "Action/RPG", ReleaseDate = new DateTime(2015,5,18)},
         new Game(){ Name = "Destroy All Humans", Genre = "Action-Adventure", ReleaseDate = new DateTime(2007,11,19)},
         };
+
+        rnd = new Random(DateTime.Now.Millisecond);
+        oneGameToShow = games[rnd.Next(0, games.Count)];
+    }
+
+    private Random rnd;
+    private Game oneGameToShow;
+
+    private void ShowNewGame()
+    {
+        oneGameToShow = SwitchGame();
+    }
+
+    private Game SwitchGame()
+    {
+        Game tempGame;
+        if (games.Count >= 2)
+        {
+            int iterator = rnd.Next(0, games.Count);
+            tempGame = games[iterator];
+        }
+        else if (games.Count == 1)
+        {
+            tempGame = games[0];
+        }
+        else
+        {
+            return new Game() { Name = "No items in array!", ReleaseDate = DateTime.Now };
+        }
+        return tempGame;
     }
 }
 
