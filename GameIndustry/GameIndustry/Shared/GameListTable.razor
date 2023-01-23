@@ -5,7 +5,7 @@
                 <th>Name</th>
                 <th>Genre</th>
                 <th>Release</th>
-                <th></th>
+                <th><input type="checkbox" @onchange="(() => displayButtons = !displayButtons)" /></th>
             </tr>
         </thead>
         <tbody>
@@ -21,7 +21,7 @@
             {
             @foreach (var item in Games)
             {
-                <IndividualGame Game="item" IsTable="true" />
+                <IndividualGame Game="item" IsTable="true" DisplayButtons = "displayButtons" />
               @*  <tr>
                     <td>@item.Name</td>
                     <td>@item.Genre</td>
@@ -35,4 +35,6 @@
 
 @code {
     [Parameter]  public List<Game> Games { get; set; }
+
+    private bool displayButtons = false;
 }
