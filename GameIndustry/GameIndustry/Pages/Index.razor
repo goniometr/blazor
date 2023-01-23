@@ -11,7 +11,24 @@
         <h2>Show all page in MOCK Database</h2>
     </div>
 </div>
-<GameListTable></GameListTable>
-<GameListTable></GameListTable>
-<GameListTable></GameListTable>
+<GameListTable Games="games"></GameListTable>
+
+
+@code
+{
+    private List<Game> games;
+    /// <summary>
+    /// Метод отвечает за данные до отрисовки
+    /// </summary>
+    /// <returns></returns>
+    protected override void OnInitialized()
+    {
+        games = new List<Game>()
+        {
+        new Game(){ Name = "Farming Simulator 2019", Genre = "Simulator", ReleaseDate = new DateTime(2018,11,19)},
+        new Game(){ Name = "Witcher", Genre = "Action/RPG", ReleaseDate = new DateTime(2015,5,18)},
+        new Game(){ Name = "Destroy All Humans", Genre = "Action-Adventure", ReleaseDate = new DateTime(2007,11,19)},
+        };
+    }
+}
 
