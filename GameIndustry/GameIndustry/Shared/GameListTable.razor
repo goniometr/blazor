@@ -13,7 +13,8 @@
         <tbody>
             @if (Games == null)
             {
-                <tr>LOADING...</tr>
+               @* <tr>LOADING...</tr>*@
+               <tr>@ChildContent</tr>
             }
             else if (Games.Count == 0)
             {
@@ -37,6 +38,7 @@
 
 @code {
     [Parameter] public List<Game> Games { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
 
     private bool displayButtons = false;
 

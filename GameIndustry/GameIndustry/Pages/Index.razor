@@ -11,54 +11,58 @@
         <h2>Show all page in MOCK Database</h2>
     </div>
 </div>
-<GameListTable Games="games"></GameListTable>
-<IndividualGame Game="oneGameToShow" DisplayButtons="true" IsTable="false" SwitchGame="ShowNewGame" />
+<GameListTable Games="games">
+    <ChildContent>
+        <tr><span style="text-align:center; color:red; font-weight:bolder">Element loading...</span></tr>
+    </ChildContent>
+</GameListTable>
+@*<IndividualGame Game="oneGameToShow" DisplayButtons="true" IsTable="false" SwitchGame="ShowNewGame" />*@
 
 @code
 {
-    private List<Game> games;
+    private List<Game> games;// = new List<Game>();
     /// <summary>
     /// Метод отвечает за данные до отрисовки
     /// </summary>
     /// <returns></returns>
-    protected override void OnInitialized()
-    {
-        games = new List<Game>()
-        {
-        new Game(){ Name = "Farming Simulator 2019", Genre = "Simulator", ReleaseDate = new DateTime(2018,11,19)},
-        new Game(){ Name = "Witcher", Genre = "Action/RPG", ReleaseDate = new DateTime(2015,5,18)},
-        new Game(){ Name = "Destroy All Humans", Genre = "Action-Adventure", ReleaseDate = new DateTime(2007,11,19)},
-        };
+    //protected override void OnInitialized()
+    //{
+    //    games = new List<Game>()
+    //    {
+    //    new Game(){ Name = "Farming Simulator 2019", Genre = "Simulator", ReleaseDate = new DateTime(2018,11,19)},
+    //    new Game(){ Name = "Witcher", Genre = "Action/RPG", ReleaseDate = new DateTime(2015,5,18)},
+    //    new Game(){ Name = "Destroy All Humans", Genre = "Action-Adventure", ReleaseDate = new DateTime(2007,11,19)},
+    //    };
 
-        rnd = new Random(DateTime.Now.Millisecond);
-        oneGameToShow = games[rnd.Next(0, games.Count)];
-    }
+    //    rnd = new Random(DateTime.Now.Millisecond);
+    //    oneGameToShow = games[rnd.Next(0, games.Count)];
+    //}
 
     private Random rnd;
     private Game oneGameToShow;
 
     private void ShowNewGame()
     {
-        oneGameToShow = SwitchGame();
+       // oneGameToShow = SwitchGame();
     }
 
-    private Game SwitchGame()
-    {
-        Game tempGame;
-        if (games.Count >= 2)
-        {
-            int iterator = rnd.Next(0, games.Count);
-            tempGame = games[iterator];
-        }
-        else if (games.Count == 1)
-        {
-            tempGame = games[0];
-        }
-        else
-        {
-            return new Game() { Name = "No items in array!", ReleaseDate = DateTime.Now };
-        }
-        return tempGame;
-    }
+    //private Game SwitchGame()
+    //{
+    //    Game tempGame;
+    //    if (games.Count >= 2)
+    //    {
+    //        int iterator = rnd.Next(0, games.Count);
+    //        tempGame = games[iterator];
+    //    }
+    //    else if (games.Count == 1)
+    //    {
+    //        tempGame = games[0];
+    //    }
+    //    else
+    //    {
+    //        return new Game() { Name = "No items in array!", ReleaseDate = DateTime.Now };
+    //    }
+    //    return tempGame;
+    //}
 }
 
