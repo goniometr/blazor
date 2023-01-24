@@ -14,12 +14,26 @@
             @if (Games == null)
             {
                 @* <tr>LOADING...</tr>*@
-                @NullList
+                if (NullList != null)
+                {
+                    @NullList
+                }
+                else
+                {
+                    <img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" height="200" />
+                }
             }
             else if (Games.Count == 0)
             {
                 @*  <tr>NO Items in array</tr>*@
-                @EmptyList
+                if (EmptyList != null)
+                {
+                    @EmptyList
+                }
+                else
+                {
+                    <img src="https://media.licdn.com/dms/image/C560BAQHvjs3O4Utmdw/company-logo_200_200/0/1519867717451?e=2147483647&v=beta&t=_ljcO2P4eZKn4slFIQnwCWJZAqCMSDdSEcpx02bS5v0" height="200" />
+                }
             }
             else
             {
