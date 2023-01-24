@@ -15,12 +15,15 @@
     <NullList>
         <tr><span style="text-align:center; color:red; font-weight:bolder">Element loading...</span></tr>
     </NullList>
+    <EmptyList>
+        <tr><span style="text-align:center; color:blue">No elements in array</span></tr>
+    </EmptyList>
 </GameListTable>
 @*<IndividualGame Game="oneGameToShow" DisplayButtons="true" IsTable="false" SwitchGame="ShowNewGame" />*@
 
 @code
 {
-    private List<Game> games;// = new List<Game>();
+    private List<Game> games = new List<Game>();
     /// <summary>
     /// Метод отвечает за данные до отрисовки
     /// </summary>

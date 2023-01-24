@@ -13,12 +13,13 @@
         <tbody>
             @if (Games == null)
             {
-               @* <tr>LOADING...</tr>*@
-               <tr>@NullList</tr>
+                @* <tr>LOADING...</tr>*@
+                @NullList
             }
             else if (Games.Count == 0)
             {
-                <tr>NO Items in array</tr>
+                @*  <tr>NO Items in array</tr>*@
+                @EmptyList
             }
             else
             {
@@ -39,11 +40,12 @@
 @code {
     [Parameter] public List<Game> Games { get; set; }
     [Parameter] public RenderFragment NullList { get; set; }
+    [Parameter] public RenderFragment EmptyList { get; set; }
 
     private bool displayButtons = false;
 
     private void DeleteTheGame(Game game)
     {
-        Games.Remove(game);    
+        Games.Remove(game);
     }
 }
