@@ -1,4 +1,4 @@
-﻿@if (!IsTable)
+﻿@if (!IsTable && @Game != null)
 {
     <div class="row text-center alert alert-info">
         <div class="col">
@@ -10,9 +10,9 @@
     if (DisplayButtons)
     {
         <div class="row">
-            <div class="col offset-3">
+            <div class="col">
                 @*<button class="btn-danger" @onclick="Delete">Delete</button>*@
-                <button class="btn-danger" @onclick="SwitchGame">Delete</button>
+                <button class="btn-primary" @onclick="SwitchGame">Switch The Game</button>
 
             </div>
 
@@ -28,24 +28,27 @@
 }
 else
 {
-    <tr>
-        <td>@Game.Name</td>
-        <td>@Game.Genre</td>
-        <td>@Game.ReleaseDate.ToString("dd.MM.yyyy")</td>
-        <td>
-            @if (DisplayButtons)
-            {
-                @*<button class="btn-danger" @onclick="Delete">Delete</button>*@
-                <button class="btn-danger" @onclick="(()=>DeleteGame.InvokeAsync(Game))">Delete</button>
+    @if (Game != null)
+    {
+        <tr>
+            <td>@Game.Name</td>
+            <td>@Game.Genre</td>
+            <td>@Game.ReleaseDate.ToString("dd.MM.yyyy")</td>
+            <td>
+                @if (DisplayButtons)
+                {
+                    @*<button class="btn-danger" @onclick="Delete">Delete</button>*@
+                    <button class="btn-danger" @onclick="(()=>DeleteGame.InvokeAsync(Game))">Delete</button>
 
-               @* @if (message != null)
+                    @* @if (message != null)
                 {
                     <span class="text-danger" pl-3>@message</span>
                     message = null;
                 }*@
-            }
-        </td>
-    </tr>
+                }
+            </td>
+        </tr>
+    }
 }
 
 

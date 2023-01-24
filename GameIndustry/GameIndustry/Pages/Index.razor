@@ -19,7 +19,7 @@
         <tr><span style="text-align:center; color:blue">No elements in array</span></tr>
     </EmptyList>*@
 </GameListTable>
-@*<IndividualGame Game="oneGameToShow" DisplayButtons="true" IsTable="false" SwitchGame="ShowNewGame" />*@
+<IndividualGame Game="oneGameToShow" DisplayButtons="true" IsTable="false" SwitchGame="ShowNewGame" />
 
 @code
 {
@@ -47,26 +47,26 @@
 
     private void ShowNewGame()
     {
-       // oneGameToShow = SwitchGame();
+        oneGameToShow = SwitchGame();
     }
 
-    //private Game SwitchGame()
-    //{
-    //    Game tempGame;
-    //    if (games.Count >= 2)
-    //    {
-    //        int iterator = rnd.Next(0, games.Count);
-    //        tempGame = games[iterator];
-    //    }
-    //    else if (games.Count == 1)
-    //    {
-    //        tempGame = games[0];
-    //    }
-    //    else
-    //    {
-    //        return new Game() { Name = "No items in array!", ReleaseDate = DateTime.Now };
-    //    }
-    //    return tempGame;
-    //}
+    private Game SwitchGame()
+    {
+        Game tempGame;
+        if (games.Count >= 2)
+        {
+            int iterator = rnd.Next(0, games.Count);
+            tempGame = games[iterator];
+        }
+        else if (games.Count == 1)
+        {
+            tempGame = games[0];
+        }
+        else
+        {
+            return new Game() { Name = "No items in array!", ReleaseDate = DateTime.Now };
+        }
+        return tempGame;
+    }
 }
 
