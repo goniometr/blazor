@@ -11,10 +11,15 @@
             </tr>
         </thead>
         <tbody>
-            @if (Games == null)
-            {
+            <GenericList ListOfItems="Games">
+                <ItemTemplate Context="game_">
+                    <IndividualGame Game="game_" IsTable="true" DisplayButtons="displayButtons" DeleteGame="DeleteTheGame" />
+                </ItemTemplate>
+            </GenericList>
+           @* @if (Games == null)
+            {*@
                 @* <tr>LOADING...</tr>*@
-                if (NullList != null)
+               @* if (NullList != null)
                 {
                     @NullList
                 }
@@ -26,7 +31,7 @@
             else if (Games.Count == 0)
             {
                 @*  <tr>NO Items in array</tr>*@
-                if (EmptyList != null)
+               @* if (EmptyList != null)
                 {
                     @EmptyList
                 }
@@ -39,14 +44,14 @@
             {
                 @foreach (var item in Games)
                 {
-                    <IndividualGame Game="item" IsTable="true" DisplayButtons="displayButtons" DeleteGame="DeleteTheGame" />
+                    <IndividualGame Game="item" IsTable="true" DisplayButtons="displayButtons" DeleteGame="DeleteTheGame" />*@
                     @*  <tr>
             <td>@item.Name</td>
             <td>@item.Genre</td>
             <td>@item.ReleaseDate.ToString("dd.MM.yyyy")</td>
             </tr>*@
-                }
-            }
+          @*      }
+            }*@
         </tbody>
     </table>
 </div>

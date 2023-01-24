@@ -1,0 +1,47 @@
+﻿@typeparam TItem
+
+@if (ListOfItems == null)
+{
+    @* <tr>LOADING...</tr>*@
+    if (NullList != null)
+    {
+        @NullList
+    }
+    else
+    {
+        <img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" height="200" />
+    }
+}
+else if (ListOfItems.Count == 0)
+{
+    @*  <tr>NO Items in array</tr>*@
+    if (EmptyList != null)
+    {
+        @EmptyList
+    }
+    else
+    {
+        <img src="https://media.licdn.com/dms/image/C560BAQHvjs3O4Utmdw/company-logo_200_200/0/1519867717451?e=2147483647&v=beta&t=_ljcO2P4eZKn4slFIQnwCWJZAqCMSDdSEcpx02bS5v0" height="200" />
+    }
+}
+else
+{
+    @foreach (var item in ListOfItems)
+    {
+        @ItemTemplate(item);
+        @*<IndividualGame Game="item" IsTable="true" DisplayButtons="displayButtons" DeleteGame="DeleteTheGame" />*@
+        @*  <tr>
+            <td>@item.Name</td>
+            <td>@item.Genre</td>
+            <td>@item.ReleaseDate.ToString("dd.MM.yyyy")</td>
+            </tr>*@
+    }
+}
+
+@code {
+    [Parameter] public RenderFragment NullList { get; set; }
+    [Parameter] public RenderFragment EmptyList { get; set; }
+
+    [Parameter] public RenderFragment<TItem> ItemTemplate { get; set; }
+    [Parameter] public List<TItem> ListOfItems { get; set; }
+}
